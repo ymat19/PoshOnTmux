@@ -5,12 +5,12 @@ $workingDir = New-Item -ItemType Directory -Path $env:TEMP\poshOnTmux -Force
 Push-Location -Path $workingDir
 
 # download script from git repo
-$shUrl = "https://raw.githubusercontent.com/rodrigobercini/poshOnTmux/main/setup.sh"
-$psUrl = "https://raw.githubusercontent.com/rodrigobercini/poshOnTmux/main/setup.ps1"
+$shUrl = "https://raw.githubusercontent.com/ymat19/PoshOnTmux/main/setup.sh"
+$psUrl = "https://raw.githubusercontent.com/ymat19/PoshOnTmux/main/setup.ps1"
 Invoke-WebRequest -Uri $shUrl
 Invoke-WebRequest -Uri $psUrl
 
-./setup.ps1
+.\setup.ps1
 
 # cleanup
 Pop-Location

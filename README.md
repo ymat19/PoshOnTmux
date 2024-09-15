@@ -1,3 +1,7 @@
+# WIP
+
 ### Install
 
-`powershell -Command "Set-ExecutionPolicy Bypass -Scope Process -Force; iex (New-Object Net.WebClient).DownloadString('https://<>/installer.ps1')"``
+```
+powershell -c "iwr https://raw.githubusercontent.com/ymat19/PoshOnTmux/main/install.ps1 -UseBasicParsing | iex"
+```
