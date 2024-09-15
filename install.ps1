@@ -7,8 +7,8 @@ Push-Location -Path $workingDir
 # download script from git repo
 $shUrl = "https://raw.githubusercontent.com/ymat19/PoshOnTmux/main/setup.sh"
 $psUrl = "https://raw.githubusercontent.com/ymat19/PoshOnTmux/main/setup.ps1"
-Invoke-WebRequest -Uri $shUrl
-Invoke-WebRequest -Uri $psUrl
+Invoke-WebRequest -Uri $shUrl -OutFile "setup.sh"
+Invoke-WebRequest -Uri $psUrl -OutFile "setup.ps1"
 
 .\setup.ps1
 
