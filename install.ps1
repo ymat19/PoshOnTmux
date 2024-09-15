@@ -10,7 +10,7 @@ $psUrl = "https://raw.githubusercontent.com/ymat19/PoshOnTmux/main/setup.ps1"
 Invoke-WebRequest -Uri $shUrl -OutFile "setup.sh"
 Invoke-WebRequest -Uri $psUrl -OutFile "setup.ps1"
 
-.\setup.ps1
+. .\setup.ps1
 
 # cleanup
 Pop-Location
