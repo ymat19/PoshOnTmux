@@ -8,6 +8,7 @@ Invoke-WebRequest -Uri $tarFileUrl -OutFile $tarFilePath
 
 wsl --import $instanceName $installDir $tarFilePath --version 1
 wsl -d $instanceName $(wsl wslpath "'$(Get-Location)\setup.sh'")
+wsl --shutdown -d $instanceName
 
 Write-Host "Installation complete. Run 'wsl -d $instanceName' to start Alpine Linux."
 Write-Host "tmux config: $tmuxConfigPath"
