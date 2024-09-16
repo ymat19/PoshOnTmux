@@ -13,7 +13,11 @@ core_posh_path=$(/mnt/c/Windows/System32/cmd.exe /c "where pwsh" | tr -d '\r')
 legacy_posh_path=$(/mnt/c/Windows/System32/cmd.exe /c "where powershell" | tr -d '\r')
 export POSH_PATH="$(wslpath ${core_posh_path:-$legacy_posh_path})"
 if tmux has-session -t=posh; then
-  exec tmux attach-session -t posh
+  # If there is a session named posh, delete it
+  tmux kill-session -t posh
+  exec tmux new-session -s posh -n PowerShell
+  # Freezes when trying to connect to an existing session
+  # exec tmux attach-session -t posh
 else
   exec tmux new-session -s posh -n PowerShell
 fi
