@@ -1,3 +1,6 @@
+# starting message
+Write-Host "Installing PoshOnTmux..."
+
 # create working directory on TEMP
 $workingDir = New-Item -ItemType Directory -Path $env:TEMP\poshOnTmux -Force
 
