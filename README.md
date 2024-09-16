@@ -7,11 +7,11 @@ powershell -c "iwr https://raw.githubusercontent.com/ymat19/PoshOnTmux/main/inst
 ### Uninstall
 
 ```
-wsl --unregister -d poshOnTmux
+wsl --unregister -d PoshOnTmux
 ```
 
 ### config file path
 
 ```
-\\wsl$\poshOnTmux\home\tmux\.tmux.conf
+\\wsl$\PoshOnTmux\home\tmux\.tmux.conf
 ```
