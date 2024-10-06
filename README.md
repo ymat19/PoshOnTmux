@@ -18,15 +18,15 @@ This setup script enables you to use **tmux keybindings for pane operations** in
 
 Run the following command to install:
 
-```bash
-powershell -c "iwr https://raw.githubusercontent.com/ymat19/PoshOnTmux/main/install.ps1 -UseBasicParsing | iex"
+```powershell
+powershell -ExecutionPolicy Bypass -c "iwr https://raw.githubusercontent.com/ymat19/PoshOnTmux/main/install.ps1 -UseBasicParsing | iex"
 ```
 
 ## Usage
 
 After installation, start tmux and PowerShell with:
 
-```bash
+```powershell
 wsl -d PoshOnTmux
 ```
 
@@ -42,7 +42,7 @@ Configuration files are located at:
 
 To uninstall, run:
 
-```bash
+```powershell
 wsl --unregister -d PoshOnTmux
 ```
 
