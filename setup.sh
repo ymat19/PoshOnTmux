@@ -12,9 +12,14 @@ EOF
 
 cat <<'EOF' > /home/$newUserName/.profile
 # Set path to PowerShell
-core_posh_path=$(/mnt/c/Windows/System32/cmd.exe /c "where pwsh" | tr -d '\r')
-legacy_posh_path=$(/mnt/c/Windows/System32/cmd.exe /c "where powershell" | tr -d '\r')
-export POSH_PATH="$(wslpath ${core_posh_path:-$legacy_posh_path})"
+core_posh_path=$(/mnt/c/Windows/System32/cmd.exe /c "where pwsh" | head -n 1 | tr -d '\r')
+legacy_posh_path=$(/mnt/c/Windows/System32/cmd.exe /c "where powershell" | head -n 1 | tr -d '\r')
+export POSH_PATH="$(wslpath "${core_posh_path:-$legacy_posh_path}")"
+
+
+if [[ "$(pwd)" == "$HOME" ]]; then
+    cd $($POSH_PATH -c 'Write-Host -NoNewLine \$env:userprofile' | xargs -0 wslpath)
+fi
 
 exec tmux new-session -n PowerShell
 
@@ -28,7 +33,7 @@ EOF
 
 cat <<'EOF' > /home/$newUserName/.tmux.conf
 # essential settings
-set -g default-command "cd $($POSH_PATH -c 'Write-Host -NoNewLine \$env:userprofile' | xargs -0 wslpath); exec $POSH_PATH"
+set -g default-command "exec $POSH_PATH"
 
 # set name of the session
 set-window-option -g automatic-rename off
@@ -43,6 +48,11 @@ set-window-option -qg utf8 on
 
 # Use 256 colors
 set -g default-terminal "screen-256color"
+
+# mouse scrolling
+set -g mouse on
+bind-key -T edit-mode-vi WheelUpPane send-keys -X scroll-up
+bind-key -T edit-mode-vi WheelDownPane send-keys -X scroll-down
 EOF
 
 chown $newUserName /home/$newUserName/.profile
