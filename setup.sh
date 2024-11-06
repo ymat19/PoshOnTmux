@@ -18,7 +18,7 @@ export POSH_PATH="$(wslpath "${core_posh_path:-$legacy_posh_path}")"
 
 
 if [[ "$(pwd)" == "$HOME" ]]; then
-    cd $($POSH_PATH -c 'Write-Host -NoNewLine \$env:userprofile' | xargs -0 wslpath)
+    cd $($POSH_PATH -c 'Write-Host -NoNewLine $env:userprofile' | xargs -0 wslpath)
 fi
 
 exec tmux new-session -n PowerShell
